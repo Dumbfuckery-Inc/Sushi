@@ -5,6 +5,7 @@ import lol.arikatsu.sushi.annotations.BotCommand;
 import lol.arikatsu.sushi.enums.EmbedType;
 import lol.arikatsu.sushi.objects.Constants;
 import lol.arikatsu.sushi.utils.CommandUtils;
+import lol.arikatsu.sushi.utils.MathUtils;
 import lol.arikatsu.sushi.utils.MessageUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.*;
@@ -14,6 +15,7 @@ import tech.xigam.cch.command.Command;
 import tech.xigam.cch.utils.Argument;
 import tech.xigam.cch.utils.Interaction;
 
+import java.lang.management.ManagementFactory;
 import java.time.OffsetDateTime;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -29,7 +31,7 @@ public final class InfoCommand extends Command implements Arguments {
 
     @Override public void execute(Interaction interaction) {
         // Send the embed.
-        interaction.reply(switch(interaction.getArgument("type", "guild", String.class)) {
+        interaction.reply(switch(interaction.getArgument("type", "bot", String.class)) {
             default -> MessageUtils.makeEmbed("Unknown type.", EmbedType.ERROR);
             case "bot" -> InfoCommand.botInfo();
             case "guild" -> InfoCommand.guildInfo(interaction.getGuild());
@@ -51,14 +53,15 @@ public final class InfoCommand extends Command implements Arguments {
             .setTitle("Sushi's Info")
             .setTimestamp(OffsetDateTime.now())
             .setFooter("Sushi", Sushi.getJdaInstance().getSelfUser().getAvatarUrl())
+            .setDescription("**Up-Time**: " + MathUtils.formatStopwatch(ManagementFactory.getRuntimeMXBean().getUptime()))
 
-            .addField("**Version**", Constants.BOT_VERSION, true)
-            .addField("**JDA Version**", Constants.JDA_VERSION, true)
-            .addField("**Commands**", CommandUtils.getCommandCount() + " commands", true)
+            .addField("Version", Constants.BOT_VERSION, true)
+            .addField("JDA Version", Constants.JDA_VERSION, true)
+            .addField("Commands", CommandUtils.getCommandCount() + " commands", true)
 
-            .addField("**Guilds**", guilds.size() + " guilds", true)
-            .addField("**Users**", usersInGuilds + " users", true)
-            .addField("**Ping**", Sushi.getJdaInstance().getGatewayPing() + "ms", true)
+            .addField("Guilds", guilds.size() + " guilds", true)
+            .addField("Users", usersInGuilds + " users", true)
+            .addField("Ping", Sushi.getJdaInstance().getGatewayPing() + "ms", true)
             .build();
     }
 
