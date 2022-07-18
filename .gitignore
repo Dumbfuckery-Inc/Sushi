@@ -1,0 +1,5 @@
+# Bot-specific configuration file.
+config.json
+
+# Logs from the bot.
+logs/
