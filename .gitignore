@@ -3,3 +3,6 @@ config.json
 
 # Logs from the bot.
 logs/
+
+# Built data.
+target/
