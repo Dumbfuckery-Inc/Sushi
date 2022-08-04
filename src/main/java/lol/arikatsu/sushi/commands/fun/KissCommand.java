@@ -33,14 +33,14 @@ public final class KissCommand extends Command implements Arguments {
         // Defer the reply.
         interaction.deferReply();
 
-        // Get a 'hug' anime image URL.
-        var hugImage = Sushi.getRandom().getAnimeImage("kiss");
+        // Get a 'kiss' anime image URL.
+        var kissImage = Sushi.getRandom().getAnimeImage("kiss");
         // Create an embed.
         interaction.reply(new EmbedBuilder()
             .setColor(EmbedType.SIMPLE.getEmbedColor())
             .setFooter(interaction.getUser().getName() + " kisses " + user.getUser().getName())
             .setTimestamp(OffsetDateTime.now())
-            .setImage(hugImage)
+            .setImage(kissImage)
             .build(), false);
     }
 

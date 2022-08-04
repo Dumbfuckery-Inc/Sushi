@@ -33,14 +33,14 @@ public final class PatCommand extends Command implements Arguments {
         // Defer the reply.
         interaction.deferReply();
 
-        // Get a 'hug' anime image URL.
-        var hugImage = Sushi.getRandom().getAnimeImage("pat");
+        // Get a 'pat' anime image URL.
+        var patImage = Sushi.getRandom().getAnimeImage("pat");
         // Create an embed.
         interaction.reply(new EmbedBuilder()
             .setColor(EmbedType.SIMPLE.getEmbedColor())
             .setFooter(interaction.getUser().getName() + " pats " + user.getUser().getName())
             .setTimestamp(OffsetDateTime.now())
-            .setImage(hugImage)
+            .setImage(patImage)
             .build(), false);
     }
 

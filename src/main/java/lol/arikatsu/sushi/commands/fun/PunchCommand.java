@@ -33,14 +33,14 @@ public final class PunchCommand extends Command implements Arguments {
         // Defer the reply.
         interaction.deferReply();
 
-        // Get a 'hug' anime image URL.
-        var hugImage = Sushi.getRandom().getAnimeImage("punch");
+        // Get a 'punch' anime image URL.
+        var punchImage = Sushi.getRandom().getAnimeImage("punch");
         // Create an embed.
         interaction.reply(new EmbedBuilder()
             .setColor(EmbedType.SIMPLE.getEmbedColor())
             .setFooter(interaction.getUser().getName() + " punches " + user.getUser().getName())
             .setTimestamp(OffsetDateTime.now())
-            .setImage(hugImage)
+            .setImage(punchImage)
             .build(), false);
     }
 
