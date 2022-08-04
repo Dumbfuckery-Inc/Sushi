@@ -6,9 +6,7 @@ import lol.arikatsu.sushi.enums.EmbedType;
 import lol.arikatsu.sushi.utils.CommandUtils;
 import lol.arikatsu.sushi.utils.MessageUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.ChannelType;
-import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import tech.xigam.cch.command.Arguments;
 import tech.xigam.cch.command.Command;
@@ -86,12 +84,12 @@ public final class AnnouncementCommand extends Command implements Arguments, Com
         // Send the announcement to all guilds.
         for(var guild : targetGuilds) {
             // Find a suitable channel.
-            var fallback = (TextChannel) guild.getChannels().stream()
+            var fallback = (BaseGuildMessageChannel) guild.getChannels().stream()
                 // Find text channels.
                 .filter(guildChannel -> guildChannel.getType() == ChannelType.TEXT)
                 // Find the first channel.
                 .findFirst().orElse(null);
-            var channel = (TextChannel) guild.getChannels().stream()
+            var channel = (BaseGuildMessageChannel) guild.getChannels().stream()
                 // Find news channels.
                 .filter(guildChannel -> guildChannel.getType() == ChannelType.NEWS)
                 // Find the first channel.
