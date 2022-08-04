@@ -6,7 +6,7 @@ A fork of [Arikatsu](https://github.com/Arikatsu)'s Discord bot: [Sushi](https:/
   - [ ] `Fun` commands
   - [ ] `Moderation` commands
   - [ ] `Image` commands
-  - [ ] `Info` commands
+  - [x] `Info` commands
   - [ ] `Search` commands
   - [ ] `Moderation` commands
   - [ ] `Voice` commands
