@@ -37,8 +37,8 @@ public final class SlapCommand extends Command implements Arguments {
         // Get a 'slap' anime image URL.
         var slapImage = Sushi.getRandom().getAnimeImage("slap");
         // Check if a reason was provided.
-        var reason = interaction.getArgument("reason", "none", String.class);
-        if(!reason.equals("none")) {
+        var reason = interaction.getArgument("reason", "", String.class);
+        if(!reason.isBlank()) {
             // Set the slap URL.
             slapImage = "https://vacefron.nl/api/batmanslap?text1=bruh&text2=%s&batman=%s&robin=%s"
                 .formatted(reason, StringUtils.encodeUrl(interaction.getUser().getAvatarUrl()),
