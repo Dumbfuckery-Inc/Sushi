@@ -3,7 +3,7 @@ A fork of [Arikatsu](https://github.com/Arikatsu)'s Discord bot: [Sushi](https:/
 
 # Checklist
 - [ ] Port Commands
-  - [ ] `Fun` commands
+  - [x] `Fun` commands
   - [ ] `Moderation` commands
   - [ ] `Image` commands
   - [x] `Info` commands
