@@ -120,7 +120,11 @@ public final class Random {
                 .getAsJsonObject();
             return embed.setImage(data.get("is_video").getAsBoolean() ?
                 "https://freepikpsd.com/wp-content/uploads/2019/10/no-image-png-5-Transparent-Images.png" :
-                data.get("url").getAsString());
+                data.get("url").getAsString())
+                .setTitle(data.get("title").getAsString(), data.get("permalink").getAsString())
+                .setDescription("Author: " + data.get("author").getAsString())
+                .setFooter("%s \uD83D\uDC4D | %s \uD83D\uDC4E | %s \uD83D\uDCAC"
+                    .formatted(data.get("ups").getAsInt(), data.get("downs").getAsInt(), data.get("num_comments").getAsInt()), null);
         } catch (IOException ignored) {
             // Return the embed with an error message.
             return embed.setDescription("An error occurred.");
