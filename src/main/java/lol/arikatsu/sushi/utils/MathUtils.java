@@ -21,4 +21,14 @@ public final class MathUtils {
         // Format the time.
         return "%dd %dh %dm %ds".formatted(days, hours, minutes, seconds);
     }
+
+    /**
+     * Returns a random number between the given minimum and maximum.
+     * @param min The minimum number.
+     * @param max The maximum number.
+     * @return The random number.
+     */
+    public static int randomNumber(int min, int max) {
+        return (int) (Math.random() * (max - min) + min);
+    }
 }
