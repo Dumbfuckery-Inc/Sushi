@@ -77,7 +77,8 @@ public final class AnnouncementCommand extends Command implements Arguments, Com
         var embed = new EmbedBuilder()
             .setColor(EmbedType.ANNOUNCEMENT.getEmbedColor())
             .setDescription(message)
-            .setFooter("From " + executor.getEffectiveName(), executor.getEffectiveAvatarUrl())
+            .setFooter(interaction.getGuild().getName(), null)
+            .setAuthor(executor.getEffectiveName(), null, executor.getUser().getEffectiveAvatarUrl())
             .setTimestamp(OffsetDateTime.now())
             .build();
 
