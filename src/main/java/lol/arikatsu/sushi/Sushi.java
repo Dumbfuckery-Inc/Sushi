@@ -3,6 +3,7 @@ package lol.arikatsu.sushi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lol.arikatsu.sushi.annotations.BotCommand;
+import lol.arikatsu.sushi.annotations.BotListener;
 import lol.arikatsu.sushi.enums.EmbedType;
 import lol.arikatsu.sushi.objects.BotConfig;
 import lol.arikatsu.sushi.utils.MessageUtils;
@@ -11,6 +12,7 @@ import lombok.Getter;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import okhttp3.OkHttpClient;
@@ -112,6 +114,8 @@ public final class Sushi {
 
             // Register commands.
             Sushi.registerCommands();
+            // Register listeners.
+            Sushi.registerListeners();
         } catch (LoginException ignored) {
             // Log a login warning if the bot failed to log in.
             logger.warn("Unable to authenticate with the Discord API. Is your bot token valid?");
@@ -145,6 +149,29 @@ public final class Sushi {
 
             // Register the command.
             commandHandler.registerCommand((BaseCommand) commandInstance);
+        }
+    }
+
+    /**
+     * Registers all listeners annotated with {@link BotListener}.
+     */
+    private static void registerListeners() throws Exception {
+        // Get all classes annotated with BotCommand.
+        var listeners = ReflectionUtils.getAllOf(BotListener.class);
+        // Register all commands.
+        for(var listener : listeners) {
+            // Create an instance of the command.
+            var listenerInstance = listener.getConstructor().newInstance();
+            // Check if the command is null or isn't an instance of BaseCommand.
+            if(!(listenerInstance instanceof ListenerAdapter)) {
+                // Log an error if the command is null or isn't an instance of BaseCommand.
+                logger.warn("Listener {} is null or isn't an instance of listenerInstance.",
+                    listener.getSimpleName());
+                continue;
+            }
+
+            // Register the listener.
+            jdaInstance.addEventListener(listenerInstance);
         }
     }
 }
