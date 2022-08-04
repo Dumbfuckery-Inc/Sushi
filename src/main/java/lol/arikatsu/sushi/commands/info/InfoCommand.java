@@ -42,7 +42,7 @@ public final class InfoCommand extends Command implements Arguments {
             default -> MessageUtils.makeEmbed("Unknown type.", EmbedType.ERROR);
             case "bot" -> InfoCommand.botInfo();
             case "guild" -> InfoCommand.guildInfo(interaction.getGuild());
-            case "user" -> InfoCommand.userInfo(interaction.getGuild(), interaction.getArgument("user", interaction.getMember().getUser(), User.class));
+            case "user" -> InfoCommand.userInfo(interaction.getArgument("user", interaction.getMember(), Member.class));
         }, false);
     }
 
@@ -108,14 +108,9 @@ public final class InfoCommand extends Command implements Arguments {
     }
 
     @SuppressWarnings("ConstantConditions")
-    private static MessageEmbed userInfo(Guild guild, User user) {
+    private static MessageEmbed userInfo(Member member) {
         // Get information.
-        var member = guild.getMemberById(user.getId());
-        if(member == null) {
-            // If the member is null, then the user is not in the guild.
-            return MessageUtils.makeEmbed("User is not in the guild.", EmbedType.ERROR);
-        }
-
+        var user = member.getUser();
         var profile = user.retrieveProfile().complete();
         var status = member.getOnlineStatus();
         var activities = member.getActivities();

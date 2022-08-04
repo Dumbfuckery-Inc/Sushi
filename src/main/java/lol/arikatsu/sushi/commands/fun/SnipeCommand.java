@@ -4,6 +4,7 @@ import lol.arikatsu.sushi.annotations.BotCommand;
 import lol.arikatsu.sushi.enums.EmbedType;
 import lol.arikatsu.sushi.managers.SnipeManager;
 import lol.arikatsu.sushi.objects.CachedMessage;
+import lol.arikatsu.sushi.utils.CommandUtils;
 import lol.arikatsu.sushi.utils.MessageUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.GuildChannel;
@@ -23,6 +24,9 @@ public final class SnipeCommand extends Command implements Arguments {
     }
 
     @Override public void execute(Interaction interaction) {
+        // Check if the command was executed in a guild.
+        if(!CommandUtils.inGuild(interaction)) return;
+
         // Get arguments.
         var type = interaction.getArgument("type", "deleted", String.class);
         var channel = interaction.getArgument("channel", interaction.getGuild().getTextChannelById(

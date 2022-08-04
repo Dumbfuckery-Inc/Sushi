@@ -29,6 +29,20 @@ public final class CommandUtils {
     }
 
     /**
+     * Checks if the interaction was made in a guild.
+     * @param interaction The interaction to check.
+     * @return True if the interaction was made in a guild.
+     */
+    public static boolean inGuild(Interaction interaction) {
+        // Check if the interaction is in a guild.
+        var guild = interaction.getGuild();
+        if(guild == null) {
+            // Reply with a permission message.
+            interaction.reply(Constants.GUILD_ONLY, false); return false;
+        } return true; // Return true if the interaction is in a guild.
+    }
+
+    /**
      * Gets the total amount of registered commands.
      * @return An integer representing the amount of commands registered.
      */

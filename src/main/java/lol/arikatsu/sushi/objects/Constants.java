@@ -27,6 +27,10 @@ public final class Constants {
         "You do not have permission to use this command.", EmbedType.ERROR
     );
 
+    public static final MessageEmbed GUILD_ONLY = MessageUtils.makeEmbed(
+        "This command can only be used in a guild.", EmbedType.ERROR
+    );
+
     /* Bot constants. */
     public static final String BOT_VERSION = "1.0.0";
     public static final String JDA_VERSION = "5.0.0-alpha.13";
