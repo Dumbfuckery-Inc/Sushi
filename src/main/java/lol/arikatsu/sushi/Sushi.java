@@ -2,6 +2,7 @@ package lol.arikatsu.sushi;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import io.github.ctkwarrior.srod.Random;
 import lol.arikatsu.sushi.annotations.BotCommand;
 import lol.arikatsu.sushi.annotations.BotListener;
 import lol.arikatsu.sushi.enums.EmbedType;
@@ -45,6 +46,9 @@ public final class Sushi {
     /* The global OkHttp client instance. */
     @Getter private static final OkHttpClient httpClient =
         new OkHttpClient.Builder().build();
+    /* The global Random wrapper instance. */
+    @Getter private static final Random random
+        = new Random(httpClient, gson);
     /* The global bot configuration instance. */
     @Getter private static BotConfig config;
 
