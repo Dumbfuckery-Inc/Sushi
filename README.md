@@ -13,7 +13,7 @@ A fork of [Arikatsu](https://github.com/Arikatsu)'s Discord bot: [Sushi](https:/
   - [ ] `Music` commands
   - [ ] `NSFW` commands
   - [ ] `Administrative` commands
-  - [ ] `Utility` commands
+  - [x] `Utility` commands
   - [ ] `s-help` command
 - [ ] Implement Systems
   - [ ] Suggestion system
