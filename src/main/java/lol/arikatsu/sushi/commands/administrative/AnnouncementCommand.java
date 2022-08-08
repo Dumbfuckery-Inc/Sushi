@@ -117,7 +117,7 @@ public final class AnnouncementCommand extends Command implements Arguments, Com
         }
 
         // Reply with a success message.
-        interaction.reply(MessageUtils.makeEmbed("Announcement sent to " + targetGuilds.size() + " guilds."), false);
+        interaction.reply(MessageUtils.makeEmbed("Announcement sent to " + targetGuilds.size() + " guilds."));
     }
 
     @Override public void complete(Completion completion) {

@@ -20,7 +20,7 @@ public final class ShutdownCommand extends Command {
         interaction.deferReply();
 
         // Reply with a success message.
-        interaction.reply(MessageUtils.makeEmbed("Shutting down..."), false);
+        interaction.reply(MessageUtils.makeEmbed("Shutting down..."));
 
         // Stop the program.
         new Thread(() -> {

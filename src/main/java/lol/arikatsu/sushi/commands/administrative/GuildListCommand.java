@@ -34,7 +34,7 @@ public final class GuildListCommand extends Command implements Callable {
             interaction.addButtons(Button.primary("2", "Next Page"));
 
         // Reply with the guilds.
-        interaction.reply(this.makeEmbed(guilds, 1), false);
+        interaction.reply(this.makeEmbed(guilds, 1));
     }
 
     @Override public void callback(Callback callback) {

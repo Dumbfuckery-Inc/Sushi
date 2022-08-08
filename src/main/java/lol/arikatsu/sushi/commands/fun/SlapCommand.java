@@ -51,7 +51,7 @@ public final class SlapCommand extends Command implements Arguments {
             .setFooter(interaction.getUser().getName() + " slaps " + user.getUser().getName())
             .setTimestamp(OffsetDateTime.now())
             .setImage(slapImage)
-            .build(), false);
+            .build());
     }
 
     @Override public Collection<Argument> getArguments() {

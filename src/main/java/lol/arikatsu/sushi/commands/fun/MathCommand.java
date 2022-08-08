@@ -31,10 +31,10 @@ public final class MathCommand extends Command implements Arguments {
             // Evaluate the expression.
             var result = MathUtils.evaluate(expression);
             // Reply with the result.
-            interaction.reply(MessageUtils.makeEmbed("Result: `" + result + "`"), false);
+            interaction.reply(MessageUtils.makeEmbed("Result: `" + result + "`"));
         } catch (RuntimeException ignored) {
             // If the expression is invalid, reply with an error message.
-            interaction.reply(MessageUtils.makeEmbed("Invalid expression.", EmbedType.ERROR), false);
+            interaction.reply(MessageUtils.makeEmbed("Invalid expression.", EmbedType.ERROR));
         }
     }
 

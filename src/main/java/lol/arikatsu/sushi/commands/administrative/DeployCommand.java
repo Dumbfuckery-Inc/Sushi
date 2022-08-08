@@ -37,12 +37,12 @@ public final class DeployCommand extends Command implements Arguments {
             // Deploy slash-commands.
             Sushi.getCommandHandler().deployAll(target.equals("guild") ? guild : null);
             // Reply with a success message.
-            interaction.reply(MessageUtils.makeEmbed("Deployed all slash-commands" + (target.equals("guild") ? " to " + guild.getName() : "") + "."), false);
+            interaction.reply(MessageUtils.makeEmbed("Deployed all slash-commands" + (target.equals("guild") ? " to " + guild.getName() : "") + "."));
         } else {
             // Purge slash-commands.
             Sushi.getCommandHandler().downsert(target.equals("guild") ? guild : null);
             // Reply with a success message.
-            interaction.reply(MessageUtils.makeEmbed("Purged all slash-commands" + (target.equals("guild") ? " from " + guild.getName() : "") + "."), false);
+            interaction.reply(MessageUtils.makeEmbed("Purged all slash-commands" + (target.equals("guild") ? " from " + guild.getName() : "") + "."));
         }
     }
 

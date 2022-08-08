@@ -99,10 +99,10 @@ public final class GetInviteCommand extends Command implements Arguments, Comple
         // Reply with the invites.
         if(invites.isEmpty()) {
             // Reply with an error message.
-            interaction.reply(MessageUtils.makeEmbed("No invites were created.", EmbedType.ERROR), false);
+            interaction.reply(MessageUtils.makeEmbed("No invites were created.", EmbedType.ERROR));
         } else {
             // Reply with the invites.
-            interaction.reply(MessageUtils.makeEmbed("Invites created: " + String.join(", ", invites)), false);
+            interaction.reply(MessageUtils.makeEmbed("Invites created: " + String.join(", ", invites)));
         }
     }
 

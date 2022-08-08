@@ -41,7 +41,7 @@ public final class KissCommand extends Command implements Arguments {
             .setFooter(interaction.getUser().getName() + " kisses " + user.getUser().getName())
             .setTimestamp(OffsetDateTime.now())
             .setImage(kissImage)
-            .build(), false);
+            .build());
     }
 
     @Override public Collection<Argument> getArguments() {

@@ -32,6 +32,6 @@ public final class PingCommand extends Command {
             .setColor(EmbedType.SIMPLE.getEmbedColor())
             .setFooter("Requested by " + interaction.getMember().getEffectiveName(), interaction.getMember().getEffectiveAvatarUrl())
             .build();
-        interaction.reply(embed, false);
+        interaction.reply(embed);
     }
 }

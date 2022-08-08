@@ -41,7 +41,7 @@ public final class PunchCommand extends Command implements Arguments {
             .setFooter(interaction.getUser().getName() + " punches " + user.getUser().getName())
             .setTimestamp(OffsetDateTime.now())
             .setImage(punchImage)
-            .build(), false);
+            .build());
     }
 
     @Override public Collection<Argument> getArguments() {

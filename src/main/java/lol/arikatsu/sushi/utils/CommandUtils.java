@@ -24,7 +24,7 @@ public final class CommandUtils {
         var executor = interaction.getMember();
         if(!BOT_CONFIG.administrators.contains(executor.getId())) {
             // Reply with a permission message.
-            interaction.reply(Constants.NO_PERMISSION, false); return false;
+            interaction.reply(Constants.NO_PERMISSION); return false;
         } return true; // Return true if the executor is authorized.
     }
 
@@ -38,7 +38,7 @@ public final class CommandUtils {
         var guild = interaction.getGuild();
         if(guild == null) {
             // Reply with a permission message.
-            interaction.reply(Constants.GUILD_ONLY, false); return false;
+            interaction.reply(Constants.GUILD_ONLY); return false;
         } return true; // Return true if the interaction is in a guild.
     }
 

@@ -43,7 +43,7 @@ public final class InfoCommand extends Command implements Arguments {
             case "bot" -> InfoCommand.botInfo();
             case "guild" -> InfoCommand.guildInfo(interaction.getGuild());
             case "user" -> InfoCommand.userInfo(interaction.getArgument("user", interaction.getMember(), Member.class));
-        }, false);
+        });
     }
 
     private static MessageEmbed botInfo() {
