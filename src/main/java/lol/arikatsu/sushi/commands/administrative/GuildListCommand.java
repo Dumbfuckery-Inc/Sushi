@@ -72,7 +72,7 @@ public final class GuildListCommand extends Command implements Callable {
         var description = new StringBuilder();
         for(int i = 0; i < Math.min(guilds.size(), 9); i++) {
             var guild = guilds.get(i);
-            description.append("**%s** - %s | %s Members (%s)\n"
+            description.append("**%s.** - `%s` | %s Members (`%s`)\n"
                 .formatted(i + 1, guild.getName(), guild.getMemberCount(), guild.getId()));
         }
 
