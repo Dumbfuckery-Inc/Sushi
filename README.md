@@ -4,7 +4,6 @@ A fork of [Arikatsu](https://github.com/Arikatsu)'s Discord bot: [Sushi](https:/
 # Checklist
 - [ ] Port Commands
   - [x] `Fun` commands
-  - [ ] `Moderation` commands
   - [ ] `Image` commands
   - [x] `Info` commands
   - [ ] `Search` commands
@@ -12,7 +11,7 @@ A fork of [Arikatsu](https://github.com/Arikatsu)'s Discord bot: [Sushi](https:/
   - [ ] `Voice` commands
   - [ ] `Music` commands
   - [ ] `NSFW` commands
-  - [ ] `Administrative` commands
+  - [x] `Administrative` commands
   - [x] `Utility` commands
   - [ ] `s-help` command
 - [ ] Implement Systems
