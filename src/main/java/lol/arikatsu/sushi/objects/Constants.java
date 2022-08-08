@@ -21,6 +21,7 @@ public final class Constants {
 
     public static final BotConfig.Colors COLOR_CONFIG = CONFIG.color;
     public static final BotConfig.Bot BOT_CONFIG = CONFIG.bot;
+    public static final BotConfig.Networking NETWORK_CONFIG = CONFIG.networking;
 
     /* Response constants. */
     public static final MessageEmbed NO_PERMISSION = MessageUtils.makeEmbed(

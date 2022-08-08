@@ -10,6 +10,8 @@ public final class BotConfig {
     public Bot bot = new Bot();
     /* Configuration for colors. */
     public Colors color = new Colors();
+    /* Configuration for networking. */
+    public Networking networking = new Networking();
 
     public static class Bot {
         /* The command prefix. */
@@ -25,6 +27,11 @@ public final class BotConfig {
         public String errorEmbedColor = "#f54040";
         /* This is the embed color used when making an 'announcement' embed. */
         public String announcementEmbedColor = "#49b0f5";
+    }
+
+    public static class Networking {
+        /* This is the IPv6 block the machine is assigned to. */
+        public String ipv6Block = "";
     }
 
     /**
