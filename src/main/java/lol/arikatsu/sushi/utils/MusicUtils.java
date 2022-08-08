@@ -61,14 +61,14 @@ public final class MusicUtils {
     public static void playTrack(String query, Guild guild, String requester, Consumer<Object> callback) {
         var trackManager = MusicManager.getInstance().getTrackManager(guild);
         MusicManager.getInstance().getAudioPlayerManager().loadItemOrdered(trackManager,
-            query, new ResultHandler(callback, trackManager, requester, query));
+            query, new ResultHandler(callback, trackManager, requester));
     }
 
     @AllArgsConstructor
     static class ResultHandler implements AudioLoadResultHandler {
         private final Consumer<Object> callback;
         private final TrackManager trackManager;
-        private final String requester, query;
+        private final String requester;
 
         @Override public void trackLoaded(AudioTrack track) {
             // Set the track's requester.
