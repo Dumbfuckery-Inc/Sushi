@@ -39,7 +39,7 @@ import java.util.Collection;
      * @param track An audio track.
      */
     public void playTrack(AudioTrack track) {
-        this.audioPlayer.playTrack(track);
+        this.scheduler.playTrack(track);
     }
 
     /**
