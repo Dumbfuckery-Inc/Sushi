@@ -31,6 +31,15 @@ public final class Constants {
     public static final MessageEmbed GUILD_ONLY = MessageUtils.makeEmbed(
         "This command can only be used in a guild.", EmbedType.ERROR
     );
+    public static final MessageEmbed NOT_IN_VOICE_CHANNEL = MessageUtils.makeEmbed(
+        "You must be in a voice channel to use this command.", EmbedType.ERROR
+    );
+    public static final MessageEmbed ALREADY_CONNECTED = MessageUtils.makeEmbed(
+        "I am already connected to a voice channel.", EmbedType.ERROR
+    );
+    public static final MessageEmbed NOT_CONNECTED = MessageUtils.makeEmbed(
+        "I am not connected to a voice channel.", EmbedType.ERROR
+    );
 
     /* Bot constants. */
     public static final String BOT_VERSION = "1.0.0";

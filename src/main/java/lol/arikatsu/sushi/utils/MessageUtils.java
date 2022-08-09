@@ -52,4 +52,13 @@ public final class MessageUtils {
             return false;
         } return true; // Return true if the string is a number.
     }
+
+    /**
+     * Checks if the specified string is a URL.
+     * @param toCheck The string to check.
+     * @return True if the string is a URL.
+     */
+    public static boolean isUrl(String toCheck) {
+        return toCheck.matches("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
+    }
 }
