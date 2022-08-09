@@ -26,7 +26,7 @@
         <dependency>
             <groupId>tech.xigam</groupId>
             <artifactId>CCH</artifactId>
-            <version>1.6.3</version>
+            <version>1.6.5</version>
             <scope>compile</scope>
         </dependency>
 
