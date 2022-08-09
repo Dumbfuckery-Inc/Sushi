@@ -22,15 +22,24 @@ public final class MusicUtils {
     /**
      * Plays a track with a specified query.
      * @param query The query to search for.
-     * @param interaction The interaction to use.
+     * @param interaction The interaction to reply to.
      */
     public static void playTrack(String query, Interaction interaction) {
-        MusicUtils.playTrack(query, interaction.getGuild(), interaction.getMember().getId(), result -> {
+        MusicUtils.playTrack(query, interaction.getGuild(), interaction);
+    }
+
+    /**
+     * Plays a track with a specified query.
+     * @param query The query to search for.
+     * @param interaction The interaction to use.
+     */
+    public static void playTrack(String query, Guild guild, Interaction interaction) {
+        MusicUtils.playTrack(query, guild, interaction.getUser().getId(), result -> {
             if(result instanceof String friendlyError) {
-                interaction.reply(MessageUtils.makeEmbed(friendlyError, EmbedType.ERROR));
+                interaction.reply(MessageUtils.makeEmbed(friendlyError, EmbedType.ERROR), false);
             } else if(result instanceof Exception unfriendlyError) {
                 Sushi.getLogger().warn("Unable to play track " + query + ".", unfriendlyError);
-                interaction.reply(MessageUtils.makeEmbed("An error occurred while trying to play the track.", EmbedType.ERROR));
+                interaction.reply(MessageUtils.makeEmbed("An error occurred while trying to play the track.", EmbedType.ERROR), false);
             } else if(result instanceof AudioTrack track) {
                 // Parse track info.
                 var title = track.getInfo().title;
@@ -40,13 +49,13 @@ public final class MusicUtils {
                     .replace(")", "\\)");
 
                 interaction.reply(MessageUtils.makeEmbed("**Queued:** [%s](%s)"
-                    .formatted(shortened, track.getInfo().uri)));
+                    .formatted(shortened, track.getInfo().uri)), false);
             } else if(result instanceof AudioPlaylist playlist) {
                 // Get the track count.
                 var trackCount = playlist.getTracks();
 
                 interaction.reply(MessageUtils.makeEmbed("Queued **%s** tracks from [%s](%s)"
-                    .formatted(trackCount, playlist.getName(), query)));
+                    .formatted(trackCount, playlist.getName(), query)), false);
             }
         });
     }
