@@ -16,13 +16,15 @@ import java.util.concurrent.LinkedBlockingQueue;
  * Manages timing of audio tracks.
  */
 public final class TrackScheduler extends AudioEventAdapter {
+    @Getter private final TrackManager trackManager;
     @Getter private final AudioPlayer audioPlayer;
     @Getter private final BlockingQueue<AudioTrack> queue
         = new LinkedBlockingQueue<>();
 
     @Getter @Setter private Loop loop = Loop.NONE;
 
-    public TrackScheduler(AudioPlayer audioPlayer) {
+    public TrackScheduler(TrackManager trackManager, AudioPlayer audioPlayer) {
+        this.trackManager = trackManager;
         this.audioPlayer = audioPlayer;
     }
 
@@ -75,7 +77,7 @@ public final class TrackScheduler extends AudioEventAdapter {
     @Override public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
         // Check if the queue is done.
         if(this.queue.size() == 0 && this.loop == Loop.NONE) {
-            this.audioPlayer.destroy(); return;
+            this.trackManager.stop(); return;
         }
 
         // Check if the player should continue playing.

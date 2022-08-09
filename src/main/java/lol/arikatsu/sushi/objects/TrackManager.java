@@ -6,6 +6,7 @@ import lol.arikatsu.sushi.enums.Loop;
 import lol.arikatsu.sushi.managers.MusicManager;
 import lombok.Getter;
 import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.managers.AudioManager;
 
 import java.util.Collection;
 
@@ -13,12 +14,14 @@ import java.util.Collection;
  * Manages scheduling & audio playback for a guild.
  */
 @Getter public final class TrackManager {
+    private final AudioManager audioManager;
     private final AudioPlayer audioPlayer;
     private final TrackScheduler scheduler;
 
     public TrackManager(Guild guild) {
         this.audioPlayer = MusicManager.getInstance().createAudioPlayer();
-        this.scheduler = new TrackScheduler(this.audioPlayer);
+        this.scheduler = new TrackScheduler(this, this.audioPlayer);
+        this.audioManager = guild.getAudioManager();
 
         this.audioPlayer.addListener(this.scheduler);
     }
@@ -56,5 +59,8 @@ import java.util.Collection;
 
         this.scheduler.getQueue().clear(); // Clear the queue.
         this.scheduler.setLoop(Loop.NONE); // Disable loop mode.
+
+        if(this.audioManager.isConnected()) // Disconnect from the voice channel if connected.
+            this.audioManager.closeAudioConnection(); // Disconnect from the voice channel.
     }
 }
