@@ -26,6 +26,6 @@ public final class DebugCommand extends Command {
         DiscordLogger.channel(interaction.getChannel());
 
         // Reply with a success message.
-        interaction.reply(MessageUtils.makeEmbed("Debug mode is now " + (debugMode ? "disabled" : "enabled") + "."));
+        interaction.reply(MessageUtils.makeEmbed("Debug mode is now " + (debugMode ? "disabled" : "enabled") + "."), false);
     }
 }

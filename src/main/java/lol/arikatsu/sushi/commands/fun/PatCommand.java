@@ -41,7 +41,7 @@ public final class PatCommand extends Command implements Arguments {
             .setFooter(interaction.getUser().getName() + " pats " + user.getUser().getName())
             .setTimestamp(OffsetDateTime.now())
             .setImage(patImage)
-            .build());
+            .build(), false);
     }
 
     @Override public Collection<Argument> getArguments() {

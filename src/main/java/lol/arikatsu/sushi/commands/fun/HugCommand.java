@@ -41,7 +41,7 @@ public final class HugCommand extends Command implements Arguments {
             .setFooter(interaction.getUser().getName() + " hugs " + user.getUser().getName())
             .setTimestamp(OffsetDateTime.now())
             .setImage(hugImage)
-            .build());
+            .build(), false);
     }
 
     @Override public Collection<Argument> getArguments() {

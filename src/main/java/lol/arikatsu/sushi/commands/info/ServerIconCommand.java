@@ -31,6 +31,6 @@ public final class ServerIconCommand extends Command {
             .setColor(EmbedType.SIMPLE.getEmbedColor())
             .setImage(iconUrl)
             .setDescription("[Download](%s)".formatted(iconUrl))
-            .build());
+            .build(), false);
     }
 }

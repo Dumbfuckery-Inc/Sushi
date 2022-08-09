@@ -21,6 +21,6 @@ public final class MemeCommand extends Command {
         // Create an embed.
         interaction.reply(Sushi.getRandom().getMeme(new EmbedBuilder()
             .setColor(EmbedType.SIMPLE.getEmbedColor())
-            ).build());
+            ).build(), false);
     }
 }

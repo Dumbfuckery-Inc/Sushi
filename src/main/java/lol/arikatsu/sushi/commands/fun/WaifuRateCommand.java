@@ -37,9 +37,9 @@ public final class WaifuRateCommand extends Command implements Arguments {
 
         // Reply with a rating out of 100.
         if(BOT_CONFIG.administrators.contains(user.getId())) {
-            interaction.reply(MessageUtils.makeEmbed(name + " a 100/100 waifu."));
+            interaction.reply(MessageUtils.makeEmbed(name + " a 100/100 waifu."), false);
         } else {
-            interaction.reply(MessageUtils.makeEmbed(name + " a " + MathUtils.randomNumber(0, 100) + "/100 waifu."));
+            interaction.reply(MessageUtils.makeEmbed(name + " a " + MathUtils.randomNumber(0, 100) + "/100 waifu."), false);
         }
     }
 

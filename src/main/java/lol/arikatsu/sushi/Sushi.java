@@ -15,7 +15,6 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
-import net.dv8tion.jda.api.utils.AllowedMentions;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import okhttp3.OkHttpClient;
 import org.reflections.Reflections;
@@ -136,9 +135,7 @@ public final class Sushi {
     private static void registerCommands() throws Exception {
         // Set the argument error handler.
         commandHandler.onArgumentError = interaction ->
-            interaction.reply(MessageUtils.makeEmbed("This command requires more arguments!", EmbedType.ERROR));
-        // Turn off default mention reply.
-        AllowedMentions.setDefaultMentionRepliedUser(false);
+            interaction.reply(MessageUtils.makeEmbed("This command requires more arguments!", EmbedType.ERROR), false);
 
         // Get all classes annotated with BotCommand.
         var commands = ReflectionUtils.getAllOf(BotCommand.class);

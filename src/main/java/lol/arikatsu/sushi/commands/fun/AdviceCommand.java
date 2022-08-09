@@ -21,6 +21,6 @@ public final class AdviceCommand extends Command {
         // Reply with advice.
         interaction.reply(Sushi.getRandom().getAdvice(new EmbedBuilder()
             .setColor(EmbedType.SIMPLE.getEmbedColor())
-            ).build());
+            ).build(), false);
     }
 }

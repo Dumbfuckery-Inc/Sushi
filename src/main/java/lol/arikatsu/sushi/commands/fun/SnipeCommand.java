@@ -36,7 +36,7 @@ public final class SnipeCommand extends Command implements Arguments {
         // Check if the message is null.
         if(interaction.getMessage() == null) {
             // Reply with a failure message.
-            interaction.reply(MessageUtils.makeEmbed("No message found.", EmbedType.ERROR)); return;
+            interaction.reply(MessageUtils.makeEmbed("No message found.", EmbedType.ERROR), false); return;
         }
 
         // Get the sniped message from the channel.
@@ -49,7 +49,7 @@ public final class SnipeCommand extends Command implements Arguments {
         // Check if the message is null.
         if(message == null) {
             // Reply with a failure message.
-            interaction.reply(MessageUtils.makeEmbed("No message found.", EmbedType.ERROR)); return;
+            interaction.reply(MessageUtils.makeEmbed("No message found.", EmbedType.ERROR), false); return;
         }
 
         // Send the message.
@@ -59,7 +59,7 @@ public final class SnipeCommand extends Command implements Arguments {
             .setDescription(message.messageContent())
             .setTimestamp(message.timestamp())
             .setTitle("Sniped a message!")
-            .build());
+            .build(), false);
     }
 
     @Override public Collection<Argument> getArguments() {
