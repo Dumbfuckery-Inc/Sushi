@@ -21,6 +21,6 @@ public final class StopCommand extends Command {
         MusicManager.getInstance()
             .getTrackManager(channel.getGuild())
             .stop();
-        interaction.reply(MessageUtils.makeEmbed("The queue has been cleared and the player has been stopped."));
+        interaction.reply(MessageUtils.makeEmbed("The queue has been cleared and the player has been stopped."), false);
     }
 }
