@@ -51,14 +51,31 @@ import java.util.Collection;
     }
 
     /**
+     * Sets the audio player's volume.
+     * @param volume An integer between 0-200.
+     */
+    public void setVolume(float volume) {
+        this.audioPlayer.setVolume((int) Math.max(0,
+            Math.min(volume, 200)));
+    }
+
+    /**
+     * Set the loop state for the scheduler.
+     * @param loop The loop state.
+     */
+    public void setLoop(Loop loop) {
+        this.scheduler.setLoop(loop);
+    }
+
+    /**
      * Stops the audio player and resets it.
      */
     public void stop() {
-        this.audioPlayer.setVolume(100); // Reset the volume to default.
+        this.setVolume(100); // Reset the volume to default.
         this.audioPlayer.destroy(); // Destroy the audio player.
 
         this.scheduler.getQueue().clear(); // Clear the queue.
-        this.scheduler.setLoop(Loop.NONE); // Disable loop mode.
+        this.setLoop(Loop.NONE); // Disable loop mode.
 
         if(this.audioManager.isConnected()) // Disconnect from the voice channel if connected.
             this.audioManager.closeAudioConnection(); // Disconnect from the voice channel.
