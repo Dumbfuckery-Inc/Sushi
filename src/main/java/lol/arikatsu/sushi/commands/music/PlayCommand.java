@@ -1,6 +1,7 @@
 package lol.arikatsu.sushi.commands.music;
 
 import lol.arikatsu.sushi.annotations.BotCommand;
+import lol.arikatsu.sushi.objects.Constants;
 import lol.arikatsu.sushi.utils.CommandUtils;
 import lol.arikatsu.sushi.utils.MessageUtils;
 import lol.arikatsu.sushi.utils.MusicUtils;
@@ -21,7 +22,15 @@ public final class PlayCommand extends Command implements Arguments {
 
     @Override public void execute(Interaction interaction) {
         // Perform connection check.
-        var check = CommandUtils.doConnectionCheck(interaction); if(!check.success()) return;
+        var channel = CommandUtils.getChannel(interaction);
+        if(channel == null) {
+            interaction.reply(Constants.NOT_IN_VOICE_CHANNEL, false); return;
+        }
+
+        var audioManager = channel.getGuild().getAudioManager();
+        if(!audioManager.isConnected()) {
+            audioManager.openAudioConnection(channel);
+        }
 
         // Get arguments.
         var query = interaction.getArgument("query", String.class);
@@ -31,7 +40,7 @@ public final class PlayCommand extends Command implements Arguments {
             query = "ytsearch:" + query;
 
         // Search and play track.
-        MusicUtils.playTrack(query, check.result().getGuild(), interaction);
+        MusicUtils.playTrack(query, channel.getGuild(), interaction);
     }
 
     @Override public Collection<Argument> getArguments() {
